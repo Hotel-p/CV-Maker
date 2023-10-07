@@ -1,0 +1,2 @@
+maybe  try removing sidebar.jsx and add its components directly to app.jsx
+less depth in states that way

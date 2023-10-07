@@ -1,0 +1,110 @@
+#root {
+  background-color: lightblue;
+  /* width: 100%; */
+  width: 100vw;
+  min-height: 100vh;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+}
+
+hr {
+  border: 1px solid black;
+  margin: 0;
+}
+
+form{
+  /* background-color: #FFE5B4; */
+  background-color: #ADE6DB;
+  border-radius: 5%;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+
+label{
+  height: 100%;
+}
+
+input{
+  /* background-color: #FFE5B4; */
+  background-color: #ADE6DB;
+  margin-left: 0.5rem;
+  border: 0;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}
+
+form > button{
+  border: 1px solid #242424;
+}
+
+form > button:hover{
+  border: 1px solid white;
+  color: white;
+}
+
+.submit{
+  background-color: #faa;
+}
+
+.edit{
+  background-color: #aaf;
+}
+
+.submit:hover{
+  background-color: #e99;
+}
+
+.edit:hover{
+  background-color: #99e;
+}
+
+.main{
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 1fr;
+}
+
+.navbarApp{
+  grid-column: 1/2;
+  grid-row: 1/2;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.navbarApp > button{
+  height: 4rem;
+  font-size: 1.2rem;
+}
+
+.navbarApp > button:hover{
+  background-color: gray;
+  color: white;
+}
+
+.sidebarApp{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.contentApp{
+  grid-row: 1/-1;
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+}
