@@ -10,36 +10,36 @@ import Skills_Info_Form from './sidebar_components/skills_Info_Form';
 
 function Sidebar({stateList}){
 
-    const [PersonalInfo, setPersonalInfo] = useState(false);
-    const [EducationalInfo, setEducationalInfo] = useState(false);
-    const [ProfessionalExperience, setProfessionalExperience] = useState(false);
-    const [Skills, setSkills] = useState(false);
+    // const [PersonalInfo, setPersonalInfo] = useState(false);
+    // const [EducationalInfo, setEducationalInfo] = useState(false);
+    // const [ProfessionalExperience, setProfessionalExperience] = useState(false);
+    // const [Skills, setSkills] = useState(false);
 
     const sections = [
         {
             name:"Personal Information",
-            stateName:PersonalInfo,
-            setStateName:setPersonalInfo,
+            stateName:stateList.PersonalInfo,
+            setStateName:stateList.setPersonalInfo,
             component:Personal_Info_Form
         },
         {
             name:"Educational Information",
-            stateName:EducationalInfo,
-            setStateName:setEducationalInfo,
+            stateName:stateList.EducationalInfo,
+            setStateName:stateList.setEducationalInfo,
             component:Educational_Info_Form
         },
-        {
-            name:"Professional Experience",
-            stateName:ProfessionalExperience,
-            setStateName:setProfessionalExperience,
-            component:Professional_Exp_Form
-        },
-        {
-            name:"Skills",
-            stateName:Skills,
-            setStateName:setSkills,
-            component:Skills_Info_Form
-        },
+        // {
+        //     name:"Professional Experience",
+        //     stateName:stateList.ProfessionalExperience,
+        //     setStateName:stateList.setProfessionalExperience,
+        //     component:Professional_Exp_Form
+        // },
+        // {
+        //     name:"Skills",
+        //     stateName:stateList.SkillsSidebar,
+        //     setStateName:stateList.setSkillsSidebar,
+        //     component:Skills_Info_Form
+        // },
     ];
 
     function clickHand(sec){
@@ -70,12 +70,11 @@ function Sidebar({stateList}){
 
             <ul>
                 {sections.map((sec, index) => {
-                    const sectionKey = sec.name + index; // Using sec.name + index as a stable key
+                    const sectionKey = sec.name + index;
                     return (
                         <Fragment key={sectionKey}>
                             <li onClick={() => clickHand(sec)}>{sec.name}</li>
-                            {/* {console.log(sec.stateName)} */}
-                            {sec.stateName === true && <sec.component stateList={stateList[sec.name]} key={sectionKey} />}
+                            {sec.stateName === true && <sec.component stateList={stateList[sec.name]} /*key={sectionKey}*/ />}
                         </Fragment>
                     );
                 })}

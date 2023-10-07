@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 
 function Personal_Info_Form({ stateList }) {
-    const [readOnly, setReadOnly] = useState(false)
+    // const [readOnly, setReadOnly] = useState(stateList['readOnly'])
+    const [localName,setLocalName] = useState(stateList['fullName'])
+    const [localNo,setLocalNo] = useState(stateList['contactNo'])
+    const [localEmail,setLocalEmail] = useState(stateList['emailId'])
 
     const handleSubmit = (e) => {
         e.preventDefault();
         stateList.setPersonalOn(true)
-        setReadOnly(true)
+        stateList['setFullName'](localName)
+        stateList['setContactNo'](localNo)
+        stateList['setEmailId'](localEmail)
+        stateList['setReadOnly'](true)
+        console.log("submit: "+stateList.readOnly)
     }
 
     function handleEdit(e){
         e.preventDefault();
-        setReadOnly(false);
+        // stateList.setPersonalOn(false)
+        stateList['setReadOnly'](false);
+        console.log("Edit: "+stateList.readOnly)
     }
 
     return (
@@ -22,27 +31,29 @@ function Personal_Info_Form({ stateList }) {
                 <input 
                     type="text" 
                     id="fullName"  
-                    readOnly={readOnly} 
-                    value={stateList.fullName} 
-                    onChange={(e)=>stateList.setFullName(e.target.value)} 
+                    readOnly={stateList['readOnly']}
+                    value={localName}
+                    onChange={(e)=>setLocalName(e.target.value)}
                     placeholder="John Doe" />
 
                 <label>Contact No: </label>
                 <input 
                     type="tel" 
                     id="contactNo" 
-                    readOnly={readOnly} 
-                    value={stateList.contactNo}
-                    onChange={(e)=>stateList.setContactNo(e.target.value)}
+                    // readOnly={readOnly}
+                    readOnly={stateList['readOnly']}
+                    value={localNo}
+                    onChange={(e)=>setLocalNo(e.target.value)}
                     placeholder="0123456789" />
 
                 <label>Email Id: </label>
                 <input 
                     type="email" 
                     id="emailId" 
-                    readOnly={readOnly} 
-                    value={stateList.emailId}
-                    onChange={(e)=>stateList.setEmailId(e.target.value)}
+                    // readOnly={readOnly}
+                    readOnly={stateList['readOnly']}
+                    value={localEmail}
+                    onChange={(e)=>setLocalEmail(e.target.value)}
                     placeholder="JohnDoe@email.com" />
 
                 <button className="edit" onClick={handleEdit}>Edit</button>

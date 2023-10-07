@@ -1,7 +1,7 @@
 function Navbar(){
     return(
         <>
-            <h1>CV Builder</h1>
+            <h1>CV Maker</h1>
             <hr></hr>               {/* not working, why? */}     
         </>
     )

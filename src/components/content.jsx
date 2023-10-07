@@ -30,7 +30,7 @@ function Content({stateList}){
             } */}
 
 
-            {stateList['Professional Experience'][`professionalExpOn`] && 
+            {/* {stateList['Professional Experience'][`professionalExpOn`] && 
                 <div className='professionalInfo'>
                     <p>Professional Experience</p>
                     <hr></hr>
@@ -41,9 +41,9 @@ function Content({stateList}){
                         <em>{stateList['Professional Experience'][`employer`]}</em>
                     </div>
                 </div>
-            }
+            } */}
 
-            {stateList['Skills'][`skillsOn`] && 
+            {/* {stateList['Skills'][`skillsOn`] && 
                 <div className='skills'>
                     <p>Skills</p>
                     <hr></hr>
@@ -54,7 +54,7 @@ function Content({stateList}){
                         <em>{stateList['Skills'][`level`]}</em>
                     </div>
                 </div>
-            }
+            } */}
 
         </div>     
     )

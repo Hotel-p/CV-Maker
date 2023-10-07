@@ -5,7 +5,7 @@ function Educational_Info_Form({ stateList }) {
 
     function Form({stateList,id}) {
         
-        const [readOnly3, setReadOnly3] = useState(false);
+        // const [readOnly3, setReadOnly3] = useState(false);
 
         // let a = {"degree":"","university":""}
         // let a = {[id]:{"degree":"","university":""}}
@@ -19,12 +19,12 @@ function Educational_Info_Form({ stateList }) {
             // a = {"degree":e.target.degree.value,"university":e.target.university.value}
             // stateList.setEducationData([a, ...stateList.educationData])
             // stateList.educationData.map((abc)=>console.log(abc))
-            setReadOnly3(true);
+            // setReadOnly3(true);
         }
 
         function handleEdit(e) {
             e.preventDefault();
-            setReadOnly3(false);
+            // setReadOnly3(false);
         }
 
         return (
