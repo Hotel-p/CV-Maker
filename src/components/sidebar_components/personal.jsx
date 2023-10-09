@@ -4,7 +4,7 @@ function Personal({ stateList }) {
     const [localName,setLocalName] = useState(stateList['fullName'])
     const [localNo,setLocalNo] = useState(stateList['contactNo'])
     const [localEmail,setLocalEmail] = useState(stateList['emailId'])
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         stateList.setPersonalOn(true)

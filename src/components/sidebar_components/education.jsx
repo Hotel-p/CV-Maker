@@ -6,38 +6,42 @@ import EducationForm from "../forms/education_Form";
 function Education({ stateList }) {
 
     const [localEducationData,setLocalEducationData] = useState(stateList.educationData)
-
-    let count = 0;
-
+    
     function addEducation(){
         const id = uuid();
-        setLocalEducationData([...localEducationData,{
-                    [id]:{
-                        "aid":id,
-                        "readOnly":false,
-                        "degree":"",
-                        "university":"",
-                        fun:1223
-                    }
-                }])
+        const comp = {"id":id,"university":"","degree":"","percentage":"","description":"","readOnly":null}
+        setLocalEducationData([
+            ...localEducationData,comp
+        ])
     }
 
     function submitAll(){
-        stateList.setEducationOn(true);
+        stateList.setEducationData(localEducationData)
+        stateList.setEducationOn(true)
     }
     
     return (
-        <div className="EducationForms" key={uuid()}> 
+        <div className="educationForms" key={uuid()}> 
             
-            {localEducationData.map(eduItem => {
-                    const eduKey = Object.keys(eduItem)[0];
-                    const edu = eduItem[eduKey];
-                    return <EducationForm edu={edu} setLocalEducationData={setLocalEducationData} key={edu.id} />;
+            {   
+                localEducationData.map(eduItem => {
+                    return <EducationForm 
+                                id={eduItem.id}   
+                                degreeI={eduItem.degree} 
+                                universityI={eduItem.university} 
+                                percentageI={eduItem.percentage} 
+                                descriptionI={eduItem.description}
+                                readI={eduItem.readOnly}
+                                local={localEducationData} 
+                                setLocal={setLocalEducationData}
+                            />
                 })
             }
             
-            <button onClick={addEducation}>Add education</button>
-            <button onClick={submitAll}>Submit All</button>
+            <div className="buttons" style={{display:'flex', justifyContent:'center', gap:'3rem'}}>
+                <button onClick={addEducation}>Add education</button>
+                <button onClick={submitAll}>Submit All</button>
+            </div>
 
         </div>
     );

@@ -1,60 +1,48 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import { v4 as uuid } from 'uuid';
 
-function Skills({stateList}){
+import SkillsForm from "../forms/skills_Form";
 
-    const [readOnly4, setReadOnly4] = useState(false)
+function Skills({ stateList }) {
+
+    const [localSkillsData,setLocalSkillsData] = useState(stateList.skillsData)
     
-    function handleSubmit(e){
-        e.preventDefault();
+    function addSkills(){
+        const id = uuid();
+        const comp = {"id":id, "skill":"", "level":"", "readOnly":null}
+        setLocalSkillsData([
+            ...localSkillsData,comp
+        ])
+    }
+
+    function submitAll(){
+        stateList.setSkillsData(localSkillsData)
         stateList.setSkillsOn(true)
-        stateList.setSkill(e.target.skill.value)
-        stateList.setLevel(e.target.level.value)
     }
+    
+    return (
+        <div className="skillForms" key={uuid()}> 
+            
+            {   
+                localSkillsData.map(skillItem => {
+                    return <SkillsForm 
+                                id={skillItem.id}   
+                                skillI={skillItem.skill} 
+                                levelI={skillItem.level} 
+                                readI={skillItem.readOnly}
+                                local={localSkillsData} 
+                                setLocal={setLocalSkillsData}
+                            />
+                })
+            }
+            
+            <div className="buttons" style={{display:'flex', justifyContent:'center', gap:'3rem'}}>
+                <button onClick={addSkills}>Add Skills</button>
+                <button onClick={submitAll}>Submit All</button>
+            </div>
 
-    function handleEdit(e){
-        e.preventDefault();
-        setReadOnly4(false);
-    }
-
-    return(
-        <>
-            <form onSubmit={handleSubmit}>
-                <label>Skill: </label>
-                <input type="text" id="skill" readOnly={readOnly4} placeholder="Programming"/>
-                <label>Level: </label>
-                <div>
-                    <input
-                        type="radio"
-                        name="level"
-                        value="Beginner"
-                        id="level"
-                        readOnly={readOnly4}
-                    />
-                    <label htmlFor="beginner" style={{fontSize:"1rem"}}>Beginner</label>
-
-                    <input
-                        type="radio"
-                        name="level"
-                        value="Medium"
-                        id="level"
-                        readOnly={readOnly4}
-                    />
-                    <label htmlFor="medium" style={{fontSize:"1rem"}}>Medium</label>
-
-                    <input
-                        type="radio"
-                        name="level"
-                        value="Expert"
-                        id="level"
-                        readOnly={readOnly4}
-                    />
-                    <label htmlFor="expert" style={{fontSize:"1rem"}}>Expert</label>
-                </div>
-                <button className="edit" onClick={handleEdit}>Edit</button>
-                <button type="submit" className="submit">Submit</button>
-            </form>
-        </>
-    )
+        </div>
+    );
 }
 
 export default Skills;

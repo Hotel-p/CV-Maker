@@ -10,11 +10,6 @@ import Skills from './sidebar_components/skills';
 
 function Sidebar({stateList}){
 
-    // const [PersonalInfo, setPersonalInfo] = useState(false);
-    // const [EducationalInfo, setEducationalInfo] = useState(false);
-    // const [ProfessionalExperience, setProfessionalExperience] = useState(false);
-    // const [Skills, setSkills] = useState(false);
-
     const sections = [
         {
             name:"Personal Information",
@@ -28,18 +23,18 @@ function Sidebar({stateList}){
             setStateName:stateList.setEducationalInfo,
             component:Education
         },
-        // {
-        //     name:"Professional Experience",
-        //     stateName:stateList.ProfessionalExperience,
-        //     setStateName:stateList.setProfessionalExperience,
-        //     component:Professional_Exp_Form
-        // },
-        // {
-        //     name:"Skills",
-        //     stateName:stateList.SkillsSidebar,
-        //     setStateName:stateList.setSkillsSidebar,
-        //     component:Skills_Info_Form
-        // },
+        {
+            name:"Professional Experience",
+            stateName:stateList.ProfessionalExperience,
+            setStateName:stateList.setProfessionalExperience,
+            component:Professional
+        },
+        {
+            name:"Skills",
+            stateName:stateList.SkillsSidebar,
+            setStateName:stateList.setSkillsSidebar,
+            component:Skills
+        },
     ];
 
     function clickHand(sec){

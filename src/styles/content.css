@@ -18,7 +18,17 @@ p{
     gap: 1rem;
 }
 
-.educationalInfo,.professionalInfo,.skills{
+.personalName{
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.personalOther{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.education,.professional,.skills{
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
@@ -30,23 +40,29 @@ hr {
     margin: 0;
 }
 
-.educationName,.professionalName,.skillName{
+.sectionName{
     font-size: 1.5rem;
     font-weight: bolder;
 }
 
-.name{
-    font-size: 3rem;
-    font-weight: bolder;
+#description{
+    margin-top: 0.5rem;
+    font-size: medium;
+    font-style: italic;
 }
 
-.other > em{
-    font-weight: lighter;
-}
-
-
-
-.other{
+.educationDetails,.professionalDetails,.skillDetail{
+    margin-top: 1rem;
     display: flex;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.educationSingle,.ProfessionalSingle,.skillSingle{
+    font-size: 1.2rem;
+}
+
+.educationRow,.professionalRow,.skillRow{
+    display: flex;
+    justify-content: space-between;
 }

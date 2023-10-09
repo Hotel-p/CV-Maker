@@ -1,47 +1,31 @@
-function EducationForm({edu,setLocalEducationData}) {
-        
+import { useState } from "react";
+
+function EducationForm({id,degreeI,universityI,percentageI,descriptionI,readI,local,setLocal}) {
+    
+    const [degree,setDegree] = useState(degreeI)
+    const [university,setUniversity] = useState(universityI)
+    const [percentage,setPercentage] = useState(percentageI)
+    const [description,setDescription] = useState(descriptionI)
+    const [readOnly,setReadOnly] = useState(readI)
+
     function handleSubmit(e) {
         e.preventDefault(); 
-        stateList.setEducationData([...stateList.educationData, localEducationData[edu.id]]);
+        setReadOnly(true)
+        const newDeg = degree
+        const newUni = university 
+        const newPer = percentage
+        const newDesc = description
+        const newRead = readOnly
+        console.log("read2: "+readI)
+        const updatedEducationData = local.map((edu) => edu.id === id ? { ...edu, degree:newDeg, university: newUni, percentage:newPer, description:newDesc, readOnly:newRead } : edu)
+        setLocal(updatedEducationData)
     }
 
     function handleEdit(e) {
         e.preventDefault();
+        setReadOnly(false)
     }
 
-    function handleDegreeChange(e) {
-        const newDegree = e.target.value;
-        // const eduKey = Object.keys(edu)[0];
-        const eduKey = edu.id;
-        const updatedEdu = {
-            ...edu,
-            degree: newDegree
-        };
-
-        setLocalEducationData(prevData => {
-            const newData = { ...prevData };
-            newData[edu.id] = updatedEdu;
-            return newData;
-        });
-    }
-    
-    function handleUniversityChange(e) {
-        const newUniversity = e.target.value;
-        // const eduKey = Object.keys(edu)[0]; 
-        const eduKey = edu.id;
-        const updatedEdu = {
-            ...edu,
-            university: newUniversity 
-        };
-
-        setLocalEducationData(prevData => {
-            const newData = { ...prevData };
-            newData[edu.id] = updatedEdu;
-            return newData;
-        });
-    }
-
-    console.log("inside form")
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -49,11 +33,10 @@ function EducationForm({edu,setLocalEducationData}) {
                 <label>Degree: </label>
                 <input 
                     type="text" 
-                    id="degree" 
-                    readOnly={edu.readOnly}
-                    value={edu.degree}
-                    onChange={handleDegreeChange}
-                    // onChange={(e)=>setLocalEducationData(localEducationData[edu.id]["degree"](e.target.value))}
+                    id="degree"
+                    value={degree}
+                    onChange={(e)=>setDegree(e.target.value)}
+                    readOnly={readOnly}
                     placeholder="Bachelor of Computer Science" 
                 />
 
@@ -61,11 +44,30 @@ function EducationForm({edu,setLocalEducationData}) {
                 <input 
                     type="text" 
                     id="university" 
-                    readOnly={edu.readOnly} 
-                    value={edu.university}
-                    onChange={handleUniversityChange}
-                    // onChange={(e)=>setLocalEducationData(localEducationData[edu.id]["university"](e.target.value))}
+                    value={university}
+                    onChange={(e)=>setUniversity(e.target.value)}
+                    readOnly={readOnly}
                     placeholder="Arizona University" 
+                />
+
+                <label>Percentage: </label>
+                <input 
+                    type="text" 
+                    id="percentage" 
+                    value={percentage}
+                    onChange={(e)=>setPercentage(e.target.value)}
+                    readOnly={readOnly}
+                    placeholder="87.2" 
+                />
+                
+                <label>Description: </label>
+                <textarea 
+                    type="text" 
+                    id="description" 
+                    value={description}
+                    onChange={(e)=>setDescription(e.target.value)}
+                    readOnly={readOnly}
+                    placeholder="Describe in a few words your experiences and activities!" 
                 />
 
                 <button className="edit" onClick={handleEdit}>

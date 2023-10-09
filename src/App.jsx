@@ -10,7 +10,6 @@ import Sidebar from './components/sidebar'
 
 
 function App() {
-  console.log("render")
 
   const [PersonalInfo, setPersonalInfo] = useState(false);
   const [EducationalInfo, setEducationalInfo] = useState(false);
@@ -64,7 +63,7 @@ function App() {
       "educationData":educationData,
       "setEducationData":setEducationData,
       "educationOn":educationOn,
-      "setEducationOn":setEducationOn
+      "setEducationOn":setEducationOn,
     },
 
     "Professional Experience":{

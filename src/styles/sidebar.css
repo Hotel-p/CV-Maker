@@ -20,3 +20,7 @@ li:hover{
     /* color: white; */
     outline: 1px solid black;
 }
+
+.educationForms,.professionalForms,.skillForms{
+    margin-bottom: 2rem;
+}

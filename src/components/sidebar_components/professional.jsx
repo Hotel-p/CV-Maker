@@ -1,34 +1,51 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import { v4 as uuid } from 'uuid';
 
-function Professional({stateList}){
+import ProfessionalForm from "../forms/professional_Form";
 
-    const [readOnly2, setReadOnly2] = useState(false)
+function Professional({ stateList }) {
 
-    function handleSubmit(e){
-        e.preventDefault();
+    const [localProfessionalData,setLocalProfessionalData] = useState(stateList.professionalExpData)
+    
+    function addExperience(){
+        const id = uuid();
+        const comp = {"id":id, "jobTitle":"", "employer":"", "years":"", "description":"", "readOnly":null}
+        setLocalProfessionalData([
+            ...localProfessionalData,comp
+        ])
+    }
+
+    function submitAll(){
+        stateList.setProfessionalExpData(localProfessionalData)
         stateList.setProfessionalExpOn(true)
-        stateList.setJobTitle(e.target.jobTitle.value)
-        stateList.setEmployer(e.target.employer.value)
-        setReadOnly2(true)
     }
+    
+    return (
+        <div className="professionalForms" key={uuid()}> 
+            
+            {   
+                localProfessionalData.map(proItem => {
+                    console.log("jobT: "+proItem.jobTitle)
+                    return <ProfessionalForm 
+                                id={proItem.id}   
+                                jobTitleI={proItem.jobTitle} 
+                                employerI={proItem.employer} 
+                                yearsI={proItem.years} 
+                                descriptionI={proItem.description}
+                                readI={proItem.readOnly}
+                                local={localProfessionalData} 
+                                setLocal={setLocalProfessionalData}
+                            />
+                })
+            }
+            
+            <div className="buttons" style={{display:'flex', justifyContent:'center', gap:'3rem'}}>
+                <button onClick={addExperience}>Add Experience</button>
+                <button onClick={submitAll}>Submit All</button>
+            </div>
 
-    function handleEdit(e){
-        e.preventDefault();
-        setReadOnly2(false);
-    }
-
-    return(
-        <>
-            <form onSubmit={handleSubmit}>
-                <label>Job Title: </label>
-                <input type="text" id="jobTitle" readOnly={readOnly2} placeholder="Head Engineer"/>
-                <label>Employer: </label>
-                <input type="text" id="employer" readOnly={readOnly2} placeholder="Big Industries.Inc"/>
-                <button className="edit" onClick={handleEdit}>Edit</button>
-                <button type="submit" className="submit">Submit</button>
-            </form>
-        </>
-    )
+        </div>
+    );
 }
 
 export default Professional;
