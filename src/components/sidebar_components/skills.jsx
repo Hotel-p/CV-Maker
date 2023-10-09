@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Skills_Info_Form({stateList}){
+function Skills({stateList}){
 
     const [readOnly4, setReadOnly4] = useState(false)
     
@@ -57,4 +57,4 @@ function Skills_Info_Form({stateList}){
     )
 }
 
-export default Skills_Info_Form;
+export default Skills;

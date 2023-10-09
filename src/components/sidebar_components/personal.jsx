@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function Personal_Info_Form({ stateList }) {
-    // const [readOnly, setReadOnly] = useState(stateList['readOnly'])
+function Personal({ stateList }) {
     const [localName,setLocalName] = useState(stateList['fullName'])
     const [localNo,setLocalNo] = useState(stateList['contactNo'])
     const [localEmail,setLocalEmail] = useState(stateList['emailId'])
@@ -18,7 +17,6 @@ function Personal_Info_Form({ stateList }) {
 
     function handleEdit(e){
         e.preventDefault();
-        // stateList.setPersonalOn(false)
         stateList['setReadOnly'](false);
         console.log("Edit: "+stateList.readOnly)
     }
@@ -40,7 +38,6 @@ function Personal_Info_Form({ stateList }) {
                 <input 
                     type="tel" 
                     id="contactNo" 
-                    // readOnly={readOnly}
                     readOnly={stateList['readOnly']}
                     value={localNo}
                     onChange={(e)=>setLocalNo(e.target.value)}
@@ -50,7 +47,6 @@ function Personal_Info_Form({ stateList }) {
                 <input 
                     type="email" 
                     id="emailId" 
-                    // readOnly={readOnly}
                     readOnly={stateList['readOnly']}
                     value={localEmail}
                     onChange={(e)=>setLocalEmail(e.target.value)}
@@ -63,4 +59,4 @@ function Personal_Info_Form({ stateList }) {
     );
 }
 
-export default Personal_Info_Form;
+export default Personal;

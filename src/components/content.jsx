@@ -17,7 +17,7 @@ function Content({stateList}){
                 </div>
             }
             
-            {/* {stateList['Educational Information'][`educationOn`] && 
+            {stateList['Educational Information'][`educationOn`] && 
                 <div className='educationalInfo'>
                     <p>Education</p>
                     <hr></hr>
@@ -27,7 +27,7 @@ function Content({stateList}){
                     }
 
                 </div>
-            } */}
+            }
 
 
             {/* {stateList['Professional Experience'][`professionalExpOn`] && 

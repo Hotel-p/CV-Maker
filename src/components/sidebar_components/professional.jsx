@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Professional_Exp_Form({stateList}){
+function Professional({stateList}){
 
     const [readOnly2, setReadOnly2] = useState(false)
 
@@ -31,4 +31,4 @@ function Professional_Exp_Form({stateList}){
     )
 }
 
-export default Professional_Exp_Form;
+export default Professional;
