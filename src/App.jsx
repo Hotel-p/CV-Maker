@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import { v4 as uuid } from 'uuid'
+import { jsPDF } from "jspdf";
 
 import './App.css'
 
@@ -31,7 +32,7 @@ function App() {
   const [skillsOn,setSkillsOn] = useState(false)
   const [skillsData,setSkillsData] = useState([])
 
-  const { toPDF, targetRef } = usePDF({filename: fullName+' Resume.pdf'})
+  // const { toPDF, targetRef } = usePDF({filename: fullName+' Resume.pdf'})
 
   const stateList = {
     "PersonalInfo":PersonalInfo,
@@ -81,20 +82,27 @@ function App() {
     }
     
   }
+
+  const generatePdf = ()=>{
+    const doc = new jsPDF('portrait','pt','a4');
+    doc.html(document.querySelector('.content')).then(()=>{
+      doc.save('resume.pdf');
+    })
+  }
   
   return (
     <div className='main'>
       
       <div className='navbarApp' key={uuid()}>
         <Navbar />
-        <button onClick={() => toPDF()}>Download PDF</button>
+        <button onClick={generatePdf}>Download PDF</button>
       </div>
       
       <div className="sidebarApp" key={uuid()}>
         <Sidebar stateList={stateList}/>
       </div>
         
-      <div className="contentApp" key={uuid()} ref={targetRef}>
+      <div className="contentApp" key={uuid()}>
         <Content stateList={stateList}/>
       </div>
 
